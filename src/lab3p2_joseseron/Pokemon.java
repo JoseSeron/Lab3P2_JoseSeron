@@ -1,4 +1,3 @@
-
 package lab3p2_joseseron;
 
 /**
@@ -6,6 +5,7 @@ package lab3p2_joseseron;
  * @author joser
  */
 public class Pokemon {
+
     String nombre;
     int entradaPokedex;
     String naturaleza;
@@ -13,6 +13,13 @@ public class Pokemon {
     Pokebola pokebola;
 
     public Pokemon() {
+    }
+
+    public Pokemon(String nombre, int entradaPokedex, String naturaleza, Pokebola pokebola) {
+        this.nombre = nombre;
+        this.entradaPokedex = entradaPokedex;
+        this.naturaleza = naturaleza;
+        this.pokebola = pokebola;
     }
 
     public String getNombre() {
@@ -59,6 +66,5 @@ public class Pokemon {
     public String toString() {
         return "Pokemon{" + "nombre=" + nombre + ", entradaPokedex=" + entradaPokedex + ", naturaleza=" + naturaleza + ", atrapado=" + atrapado + ", pokebola=" + pokebola + '}';
     }
-    
-    
+
 }
