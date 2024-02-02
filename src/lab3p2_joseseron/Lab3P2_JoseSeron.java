@@ -132,23 +132,57 @@ public class Lab3P2_JoseSeron {
 
                         for (Pokemon pokemon : pokemons) {
                             if (pokemon instanceof FireType) {
-                                System.out.println(pokemons.indexOf(pokemon) + ")" + pokemon);
+                                System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
                             }
                         }
                         for (Pokemon pokemon : pokemons) {
                             if (pokemon instanceof WaterType) {
-                                System.out.println(pokemons.indexOf(pokemon) + ")" + pokemon);
+                                System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
                             }
                         }
                         for (Pokemon pokemon : pokemons) {
                             if (pokemon instanceof GrassType) {
-                                System.out.println(pokemons.indexOf(pokemon) + ")" + pokemon);
+                                System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
                             }
                         }
 
                     }
                     break;
                 case '4': // eliminar pokemon
+                    System.out.println("Que tipo de pokemon desea eliminar? (1=Fire, 2=Water, 3=Grass)");
+                    int tipoBorrar = inputInt.nextInt();
+                    if (tipoBorrar == 1) {
+
+                        for (Pokemon pokemon : pokemons) {
+                            if (pokemon instanceof FireType) {
+                                System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
+                            }
+                        }
+                        int indiceBorrar;
+                        do {
+                            System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                            indiceBorrar = inputInt.nextInt();
+                            
+                            if (!(pokemons.get(indiceBorrar) instanceof FireType)) {
+                                System.out.println("El indice ingresado no corresponde a un pokemon tipo fuego");
+                            }
+                        } while (!(pokemons.get(indiceBorrar) instanceof FireType));
+
+                        pokemons.remove(indiceBorrar);
+
+                    } else if (tipoBorrar == 2) {
+                        for (Pokemon pokemon : pokemons) {
+                            if (pokemon instanceof WaterType) {
+                                System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
+                            }
+                        }
+                    } else if (tipoBorrar == 3) {
+                        for (Pokemon pokemon : pokemons) {
+                            if (pokemon instanceof GrassType) {
+                                System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
+                            }
+                        }
+                    }
 
                     break;
                 case '5': //capturar
