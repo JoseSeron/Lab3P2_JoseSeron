@@ -6,9 +6,9 @@ package lab3p2_joseseron;
  * @author joser
  */
 public class Pokebola {
-    String color;
-    int serie;
-    int eficiencia;
+     String color;
+     int serie;
+     int eficiencia;
 
     public Pokebola() {
     }

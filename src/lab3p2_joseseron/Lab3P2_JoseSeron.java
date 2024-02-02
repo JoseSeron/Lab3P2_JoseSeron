@@ -13,49 +13,120 @@ public class Lab3P2_JoseSeron {
      * @param args the command line arguments
      */
     static Scanner input = new Scanner(System.in);
+    static Scanner inputInt = new Scanner(System.in);
+    
     public static void main(String[] args) {
-        // Arraylist Pokebolas       ArrayList Pokedex
+        
         ArrayList<Pokebola> pokebolas = new ArrayList();
         ArrayList<Pokemon> pokemons = new ArrayList();
+        
         boolean salir = true;
+        
         while (salir) {
-            System.out.println("---Menu Principal");
+            System.out.println("\n---Menu Principal");
             System.out.println("1.- CREAR POKEMON\n"
                     + "2.- CREAR POKEBOLA\n"
                     + "3.- LISTAR POKEMON\n"
                     + "4.- ELIMINAR POKEMON\n"
                     + "5.- CAPTURAR POKEMON\n"
-                    + "6.- MODIFICAR POKEMON");
+                    + "6.- MODIFICAR POKEMON\n"
+                    + "7.- SALIR");
             
             char opMenu = input.nextLine().charAt(0);
             
             switch (opMenu) {
-                case '1':
+                case '1': //crear
+                    char opCrear;
+                    
+                    System.out.println("Que tipo de pokemon quiere agregar?\n"
+                            + "1.- Fire Type\n"
+                            + "2.- Water Type\n"
+                            + "3.- Grass Type");
+                    opCrear = input.nextLine().charAt(0);
+                    
+                    System.out.println("Ingrese un nombre para el pokemon: ");
+                    String nombre = input.nextLine();
+                    System.out.println("Ingrese naturaleza del pokemon(ej. timido, energetico, misterioso): ");
+                    String naturaleza = input.nextLine();
+                    System.out.println("Ingrese numero de entrada en la pokedex: ");
+                    int entradaPokedex = inputInt.nextInt();
+                    //pokebola en null y atrapado en false
+
+                    switch (opCrear) {
+                        case '1': //fuego
+                            System.out.println("Ingrese potencia de las llamas del pokemon (1-100): ");
+                            int potencia = inputInt.nextInt();
+                            FireType nuevoFire = new FireType();
+                            nuevoFire.setAtrapado(false);
+                            nuevoFire.setEntradaPokedex(entradaPokedex);
+                            nuevoFire.setNombre(nombre);
+                            nuevoFire.setNaturaleza(naturaleza);
+                            nuevoFire.setPokebola(null);
+                            nuevoFire.setPotencia(potencia);
+                            pokemons.add(nuevoFire);
+                            System.out.println(nombre + " fue añadido!");
+                            
+                            break;
+                        case '2': //water
+                            WaterType nuevoWater = new WaterType();
+                            System.out.println("Puede vivir fuera del agua? (1=si, 2=no)");
+                            char vivirFuera = input.nextLine().charAt(0);
+                            if (vivirFuera=='1') {
+                                nuevoWater.setAmfibio(true);
+                            }else if (vivirFuera =='2') {
+                                nuevoWater.setAmfibio(false);
+                            }
+                            
+                            System.out.println("Ingrese rapidez al nada (1-100):");
+                            int nado = inputInt.nextInt();
+                            nuevoWater.setAtrapado(false);
+                            nuevoWater.setEntradaPokedex(entradaPokedex);
+                            nuevoWater.setNado(nado);
+                            nuevoWater.setNaturaleza(naturaleza);
+                            nuevoWater.setNombre(nombre);
+                            nuevoWater.setPokebola(null);
+                            pokemons.add(nuevoWater);
+                            System.out.println(nombre+" fue añadido!");
+                            
+                            break;
+                        case '3': // grass
+                            GrassType nuevoGrass = new GrassType(); 
+                            System.out.println("Ingrese habitat: ");
+                            String habitat = input.nextLine();
+                            System.out.println("Ingrese el dominio sobre las plantas (1-100):");
+                            int dominio = inputInt.nextInt();
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
                     
                     break;
-                      case '2':
-                    
+                case '2': // crear pokebola
+
                     break;
-                      case '3':
-                    
+                case '3': //listar
+
                     break;
-                      case '4':
-                    
+                case '4': // eliminar pokemon
+
                     break;
-                      case '5':
-                    
+                case '5': //capturar
+
                     break;
-                      case '6': //salir
-                          System.out.println("Saliendo del programa...");
-                          salir=false;
+                case '6': //modificar
+
                     break;
+                case '7': //salir
+                    System.out.println("Saliendo del programa...");
+                    salir = false;
+                    break;
+                
                 default:
                     throw new AssertionError();
             }
-                  
+            
+        } // wh salir menu principal
 
-        } // salir menu principal
-
-    }
+    } //main
 
 }

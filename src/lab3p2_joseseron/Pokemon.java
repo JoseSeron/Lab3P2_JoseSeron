@@ -9,7 +9,7 @@ public class Pokemon {
     String nombre;
     int entradaPokedex;
     String naturaleza;
-    boolean atrapado = false;
+    boolean atrapado;
     Pokebola pokebola;
 
     public Pokemon() {
