@@ -162,7 +162,7 @@ public class Lab3P2_JoseSeron {
                         do {
                             System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
                             indiceBorrar = inputInt.nextInt();
-                            
+
                             if (!(pokemons.get(indiceBorrar) instanceof FireType)) {
                                 System.out.println("El indice ingresado no corresponde a un pokemon tipo fuego");
                             }
@@ -176,12 +176,38 @@ public class Lab3P2_JoseSeron {
                                 System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
                             }
                         }
+
+                        int indiceBorrar;
+                        do {
+                            System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                            indiceBorrar = inputInt.nextInt();
+
+                            if (!(pokemons.get(indiceBorrar) instanceof WaterType)) {
+                                System.out.println("El indice ingresado no corresponde a un pokemon tipo agua");
+                            }
+                        } while (!(pokemons.get(indiceBorrar) instanceof WaterType));
+
+                        pokemons.remove(indiceBorrar);
+
                     } else if (tipoBorrar == 3) {
                         for (Pokemon pokemon : pokemons) {
                             if (pokemon instanceof GrassType) {
                                 System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
                             }
                         }
+
+                        int indiceBorrar;
+                        do {
+                            System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                            indiceBorrar = inputInt.nextInt();
+
+                            if (!(pokemons.get(indiceBorrar) instanceof GrassType)) {
+                                System.out.println("El indice ingresado no corresponde a un pokemon tipo grass");
+                            }
+                        } while (!(pokemons.get(indiceBorrar) instanceof GrassType));
+
+                        pokemons.remove(indiceBorrar);
+
                     }
 
                     break;
