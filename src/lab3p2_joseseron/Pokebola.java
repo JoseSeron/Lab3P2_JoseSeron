@@ -36,6 +36,11 @@ public class Pokebola {
     public void setEficiencia(int eficiencia) {
         this.eficiencia = eficiencia;
     }
+
+    @Override
+    public String toString() {
+        return "Pokebola{" + "color=" + color + ", serie=" + serie + ", eficiencia=" + eficiencia + '}';
+    }
     
        
 }
