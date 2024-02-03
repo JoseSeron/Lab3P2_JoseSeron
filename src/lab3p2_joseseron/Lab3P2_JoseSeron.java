@@ -215,8 +215,180 @@ public class Lab3P2_JoseSeron {
 
                     break;
                 case '6': //modificar
+                    System.out.println("Que tipo de pokemon desea modificar, 1.- fire 2.-water 3.-grass:");
+                    int tipoModificar = inputInt.nextInt();
 
+                    switch (tipoModificar) {
+                        case 1:
+
+                            for (Pokemon pokemon : pokemons) {
+                                if (pokemon instanceof FireType) {
+                                    System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
+                                }
+                            }
+
+                            int indiceModificar;
+                            do {
+                                System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                                indiceModificar = inputInt.nextInt();
+
+                                if (!(pokemons.get(indiceModificar).atrapado)) {
+                                    System.out.println("El indice ingresado no corresponde a un pokemon atrapado");
+                                }
+                            } while (!(pokemons.get(indiceModificar).atrapado));
+
+                            System.out.println("Que atributo desesa modificar?\n"
+                                    + "1.-Nombre\n"
+                                    + "2.-Numero de entrada en la pokedex\n"
+                                    + "3.-Potencia de llamas");
+                            int attModificarFire = inputInt.nextInt();
+
+                            switch (attModificarFire) {
+                                case 1:
+                                    System.out.println("Ingrese el nuevo nombre:");
+                                    String nombreModFire = input.nextLine();
+                                    pokemons.get(indiceModificar).setNombre(nombreModFire);
+                                    System.out.println("El nombre se cambio modifico exitosamente!");
+                                    break;
+                                case 2:
+                                    System.out.println("Ingrese el nuevo numero de entrada en la pokedex");
+                                    int modNumEntradaFire = inputInt.nextInt();
+                                    pokemons.get(indiceModificar).setEntradaPokedex(modNumEntradaFire);
+                                    System.out.println("El numero de entrada se modifico exitosamente!");
+                                    break;
+                                case 3:
+                                    System.out.println("Ingrese la nueva potencia de llamas (1-100):");
+                                    int modPotencia = inputInt.nextInt();
+
+                                    FireType pokeFuego = (FireType) pokemons.get(indiceModificar);
+                                    pokeFuego.setPotencia(modPotencia);
+                                    System.out.println("La potencia se modifico exitosamente!");
+                                    break;
+
+                                default:
+                                    throw new AssertionError();
+                            }
+
+                            break;
+                        case 2:
+
+                            for (Pokemon pokemon : pokemons) {
+                                if (pokemon instanceof WaterType) {
+                                    System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
+                                }
+                            }
+                            int indiceModificarwater;
+                            do {
+                                System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                                indiceModificarwater = inputInt.nextInt();
+
+                                if (!(pokemons.get(indiceModificarwater).atrapado)) {
+                                    System.out.println("El indice ingresado no corresponde a un pokemon atrapado");
+                                }
+                            } while (!(pokemons.get(indiceModificarwater).atrapado));
+
+                            System.out.println("Que atributo desesa modificar?\n"
+                                    + "1.-Nombre\n"
+                                    + "2.-Numero de entrada en la pokedex\n"
+                                    + "3.-Puede vivir fuera del agua");
+                            int attModificarWater = inputInt.nextInt();
+
+                            switch (attModificarWater) {
+                                case 1:
+                                    System.out.println("Ingrese el nuevo nombre:");
+                                    String nombreModFire = input.nextLine();
+                                    pokemons.get(indiceModificarwater).setNombre(nombreModFire);
+                                    System.out.println("El nombre se cambio modifico exitosamente!");
+                                    break;
+                                case 2:
+                                    System.out.println("Ingrese el nuevo numero de entrada en la pokedex");
+                                    int modNumEntradaFire = inputInt.nextInt();
+                                    pokemons.get(indiceModificarwater).setEntradaPokedex(modNumEntradaFire);
+                                    System.out.println("El numero de entrada se modifico exitosamente!");
+                                    break;
+
+                                case 3:
+                                    System.out.println("Ingrese si el pokemon puede vivir en el agua(1=si, 2=no)");
+                                    int amfibioMod = inputInt.nextInt();
+
+                                    switch (amfibioMod) {
+                                        case 1:
+                                            WaterType awaPoke = (WaterType) pokemons.get(indiceModificarwater);
+                                            awaPoke.setAmfibio(true);
+                                            System.out.println("Se modifico exitosamente!");
+                                            break;
+                                        case 2:
+                                            WaterType awaPoke1 = (WaterType) pokemons.get(indiceModificarwater);
+                                            awaPoke1.setAmfibio(false);
+                                            System.out.println("Se modifico exitosamente!");
+                                            break;
+                                        default:
+                                            throw new AssertionError();
+                                    }
+
+                                    break;
+
+                                default:
+                                    throw new AssertionError();
+                            }
+
+                            break;
+                        case 3:
+
+                            for (Pokemon pokemon : pokemons) {
+                                if (pokemon instanceof GrassType) {
+                                    System.out.println(pokemons.indexOf(pokemon) + ") " + pokemon);
+                                }
+                            }
+
+                            int indiceModificargrass;
+                            do {
+                                System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                                indiceModificargrass = inputInt.nextInt();
+
+                                if (!(pokemons.get(indiceModificargrass).atrapado)) {
+                                    System.out.println("El indice ingresado no corresponde a un pokemon atrapado");
+                                }
+                            } while (!(pokemons.get(indiceModificargrass).atrapado));
+
+                            System.out.println("Que atributo desesa modificar?\n"
+                                    + "1.-Nombre\n"
+                                    + "2.-Numero de entrada en la pokedex\n"
+                                    + "3.-Habitat");
+                            int attModificarGrass = inputInt.nextInt();
+
+                            switch (attModificarGrass) {
+                                case 1:
+                                    System.out.println("Ingrese el nuevo nombre:");
+                                    String nombreModFire = input.nextLine();
+                                    pokemons.get(indiceModificargrass).setNombre(nombreModFire);
+                                    System.out.println("El nombre se cambio modifico exitosamente!");
+                                    break;
+                                case 2:
+                                    System.out.println("Ingrese el nuevo numero de entrada en la pokedex");
+                                    int modNumEntradaFire = inputInt.nextInt();
+                                    pokemons.get(indiceModificargrass).setEntradaPokedex(modNumEntradaFire);
+                                    System.out.println("El numero de entrada se modifico exitosamente!");
+                                    break;
+
+                                case 3:
+                                    System.out.println("Ingrese el nuevo habitat: ");
+                                    String modHabitat = input.nextLine();
+                                    GrassType montePoke = (GrassType) pokemons.get(indiceModificargrass);
+                                    montePoke.setHabitat(modHabitat);
+                                    System.out.println("Se modifico el Habitat exitosamente!");
+                                    break;
+
+                                default:
+                                    throw new AssertionError();
+                            }
+                            break;
+
+                        default:
+                            throw new AssertionError();
+                    }
                     break;
+
                 case '7': //salir
                     System.out.println("Saliendo del programa...");
                     salir = false;
