@@ -220,17 +220,14 @@ public class Lab3P2_JoseSeron {
                         break;
                     }
 
-                    // Display available pokebolas for user to choose
                     System.out.println("Seleccione una pokebola para capturar:");
                     for (int i = 0; i < pokebolas.size(); i++) {
                         System.out.println(i + ") " + pokebolas.get(i));
                     }
 
-                    // User chooses a pokebola
                     int indicePokebola = inputInt.nextInt();
                     Pokebola seleccionPokebola = pokebolas.get(indicePokebola);
 
-                    // Check if there's any available Pokemon to capture
                     ArrayList<Pokemon> PokemonsLibres = new ArrayList<>();
                     for (Pokemon pokemon : pokemons) {
                         if (!pokemon.isAtrapado()) {
@@ -243,30 +240,37 @@ public class Lab3P2_JoseSeron {
                         break;
                     }
 
-                    // Select a random Pokemon from the available ones
-                  //  int randomIndex = (int) (Math.random() * PokemonsLibres.size());
-                  //  Pokemon randomPokemon = PokemonsLibres.get(randomIndex);
-                    
-                    int randomPokemon = random.nextInt(0, pokemons.size());
-                    
-                    
-                    
+                    int randomPokemonIndice = random.nextInt(0, pokemons.size());
+                    Pokemon randomPokemon = PokemonsLibres.get(randomPokemonIndice);
+
                     System.out.println("¡EL POKEMON " + randomPokemon.getNombre() + " HA APARECIDO!");
 
-                    // Ask the user to capture or flee
-                    System.out.println("¿Desea utilizar la pokebola para capturar (1) o huir (2)?");
+                    System.out.println("Desea utilizar la pokebola para 1=capturar o 2=huir?");
                     int opcionCaptura = inputInt.nextInt();
 
                     switch (opcionCaptura) {
                         case 1: // Capturar
-                            int chanceAtrapar = seleccionPokebola.getEficiencia();
+                          
                             int randomAtrapar = random.nextInt(0, 4);
-                            
-                            if (seleccionPokebola.getEficiencia()==3) {
-                                
-                            }
 
-                    
+                            if (seleccionPokebola.getEficiencia() == 3) {
+                                System.out.println("Pokemon Capturado!");
+                                pokebolas.remove(indicePokebola);
+                                randomPokemon.setAtrapado(true);
+                            } else if ((seleccionPokebola.getEficiencia() == 2) && (randomAtrapar == 1 || randomAtrapar == 2)) {
+                                System.out.println("Pokemon Capturado!");
+                                pokebolas.remove(indicePokebola);
+                                randomPokemon.setAtrapado(true);
+                            } else if ((seleccionPokebola.getEficiencia() == 1) && randomAtrapar == 1) {
+                                System.out.println("Pokemon Capturado!");
+                                pokebolas.remove(indicePokebola);
+                                randomPokemon.setAtrapado(true);
+                            } else {
+                                System.out.println("No has logrado capturar al Pokemon!");
+                                 pokebolas.remove(indicePokebola);
+                            }
+                           
+
                             break;
 
                         case 2: // Huir
