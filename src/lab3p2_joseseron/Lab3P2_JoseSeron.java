@@ -1,6 +1,7 @@
 package lab3p2_joseseron;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,7 @@ public class Lab3P2_JoseSeron {
      */
     static Scanner input = new Scanner(System.in);
     static Scanner inputInt = new Scanner(System.in);
+    static Random random = new Random();
 
     public static void main(String[] args) {
 
@@ -47,6 +49,7 @@ public class Lab3P2_JoseSeron {
                     System.out.println("Ingrese un nombre para el pokemon: ");
                     String nombre = input.nextLine();
                     System.out.println("Ingrese naturaleza del pokemon(ej. timido, energetico, misterioso): ");
+                    input.nextLine();
                     String naturaleza = input.nextLine();
                     System.out.println("Ingrese numero de entrada en la pokedex: ");
                     int entradaPokedex = inputInt.nextInt();
@@ -211,9 +214,70 @@ public class Lab3P2_JoseSeron {
                     }
 
                     break;
-                case '5': //capturar
+                case '5': // capturar
+                    if (pokebolas.isEmpty() || pokemons.isEmpty()) {
+                        System.out.println("No hay suficientes pokebolas o pokemons para capturar.");
+                        break;
+                    }
 
+                    // Display available pokebolas for user to choose
+                    System.out.println("Seleccione una pokebola para capturar:");
+                    for (int i = 0; i < pokebolas.size(); i++) {
+                        System.out.println(i + ") " + pokebolas.get(i));
+                    }
+
+                    // User chooses a pokebola
+                    int indicePokebola = inputInt.nextInt();
+                    Pokebola seleccionPokebola = pokebolas.get(indicePokebola);
+
+                    // Check if there's any available Pokemon to capture
+                    ArrayList<Pokemon> PokemonsLibres = new ArrayList<>();
+                    for (Pokemon pokemon : pokemons) {
+                        if (!pokemon.isAtrapado()) {
+                            PokemonsLibres.add(pokemon);
+                        }
+                    }
+
+                    if (PokemonsLibres.isEmpty()) {
+                        System.out.println("No hay pokemons disponibles para capturar.");
+                        break;
+                    }
+
+                    // Select a random Pokemon from the available ones
+                  //  int randomIndex = (int) (Math.random() * PokemonsLibres.size());
+                  //  Pokemon randomPokemon = PokemonsLibres.get(randomIndex);
+                    
+                    int randomPokemon = random.nextInt(0, pokemons.size());
+                    
+                    
+                    
+                    System.out.println("¡EL POKEMON " + randomPokemon.getNombre() + " HA APARECIDO!");
+
+                    // Ask the user to capture or flee
+                    System.out.println("¿Desea utilizar la pokebola para capturar (1) o huir (2)?");
+                    int opcionCaptura = inputInt.nextInt();
+
+                    switch (opcionCaptura) {
+                        case 1: // Capturar
+                            int chanceAtrapar = seleccionPokebola.getEficiencia();
+                            int randomAtrapar = random.nextInt(0, 4);
+                            
+                            if (seleccionPokebola.getEficiencia()==3) {
+                                
+                            }
+
+                    
+                            break;
+
+                        case 2: // Huir
+                            System.out.println("Has huido del encuentro.");
+                            break;
+
+                        default:
+                            throw new AssertionError();
+                    }
                     break;
+
                 case '6': //modificar
                     System.out.println("Que tipo de pokemon desea modificar, 1.- fire 2.-water 3.-grass:");
                     int tipoModificar = inputInt.nextInt();
@@ -229,7 +293,7 @@ public class Lab3P2_JoseSeron {
 
                             int indiceModificar;
                             do {
-                                System.out.println("Ingrese el indice (de los mostrados arriba) que desea eliminar: ");
+                                System.out.println("Ingrese el indice (de los mostrados arriba) que desea modificar: ");
                                 indiceModificar = inputInt.nextInt();
 
                                 if (!(pokemons.get(indiceModificar).atrapado)) {
